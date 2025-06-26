@@ -30,7 +30,7 @@ This repository serves as the **meta-repo** for the AFI ecosystem. It contains:
 AFI is an open protocol stewarded by its contributors and anchored by agentic transparency.  
 This meta-repo will host the **Constitution**, **Contributor Manifest**, **Working Groups**, and **Charter** files as the protocol matures.
 
-Contributors: see the [afi-docs](https://github.com/AFI-Protocol/afi-docs) repo for onboarding.
+👉 See [`contributor-manifest/onboarding.md`](./contributor-manifest/onboarding.md) to get started.
 
 ---
 
