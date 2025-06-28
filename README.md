@@ -1,41 +1,11 @@
-# AFI Protocol — Meta Repository
+# AFI Protocol (Meta‑Repo)
 
-Welcome to the **Agentic Financial Intelligence Protocol (AFI)** — a decentralized framework for agentic signal intelligence and verifiable financial cognition.
+This repository orchestrates the **Agentic Financial Intelligence** ecosystem.
 
-This repository serves as the **meta-repo** for the AFI ecosystem. It contains:
+* If you're a **human contributor**, start in `contributor-manifest/`.
+* If you're a **Factory.ai droid** or **augmentcode agent**, read:
+  1. `architecture_overview.md`
+  2. `factory/agent_manifest.json`
+  3. `droid_registry.md`
 
-- 📘 High-level documentation and governance files
-- 🧭 A map of all modular AFI repositories
-- 🔗 Links to critical subsystems powering AFI
-- 🧠 Mission, vision, and architectural philosophy
-
----
-
-## 🌐 Modular Repo Overview
-
-- `afi-core`: Core logic, scoring templates, and PoI consensus rules  
-- `afi-agents`: Configs, personas, and runtime logic for AFI Agents  
-- `afi-factory`: Droid deployment specs and Factory.ai integration scripts  
-- `afi-construct`: Smart contract logic (if applicable) and programmable interfaces  
-- `afi-infra`: Infrastructure as Code (IaC) for deployments and ops  
-- `afi-config`: Protocol-wide schemas, settings, and registry structures  
-- `afi-docs`: GitBook and external documentation source  
-- `afi-assets`: Visual identity, icons, badges, brand collateral  
-- `afi-labs` (🔒): Internal R&D: prototype scoring models, droid specs, and experiments
-
----
-
-## 🧭 Governance + Contribution
-
-AFI is an open protocol stewarded by its contributors and anchored by agentic transparency.  
-This meta-repo will host the **Constitution**, **Contributor Manifest**, **Working Groups**, and **Charter** files as the protocol matures.
-
-👉 See [`contributor-manifest/onboarding.md`](./contributor-manifest/onboarding.md) to get started.
-
----
-
-## 🧠 About AFI
-
-**Agentic Financial Intelligence (AFI)** is a protocol for encoding, scoring, and securing intelligent financial signals through modular AI agents and Proof-of-Insight consensus.
-
-Why occupy Wall Street... when you can rebuild it?
+Then open an issue or PR with your proposed improvements. Welcome aboard!

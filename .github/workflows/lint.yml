@@ -1,0 +1,22 @@
+name: Droid Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.ts'
+      - '**/*.json'
+      - '!**/node_modules/**'
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm install --production=false
+      - name: Run ESLint
+        run: npx eslint '**/*.ts' || true  # non-blocking for early droid commits

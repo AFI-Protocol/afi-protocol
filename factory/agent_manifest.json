@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "agents": {
+    "validator": {
+      "sourceRepo": "afi-core",
+      "entry": "@afi-core/cli_hooks/validator_invoker.ts",
+      "description": "Evaluates PoI and mints reputation."
+    },
+    "mentor": {
+      "sourceRepo": "afi-core",
+      "entry": "@afi-core/cli_hooks/validator_invoker.ts",
+      "description": "Pairs with agents to improve performance."
+    },
+    "signal-simulator": {
+      "sourceRepo": "afi-infra",
+      "entry": "@afi-infra/cli_templates/signal_simulator.ts",
+      "description": "Emits mock signals for testing."
+    }
+  },
+  "documentation": "../afi-docs/droid_contributor_guide.md"
+}
