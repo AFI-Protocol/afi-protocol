@@ -5,8 +5,7 @@
 3. **Fork a public repo** to get started  
    *Recommended first stops:*  
    - [`afi-core`](https://github.com/AFI-Protocol/afi-core) – scoring logic & consensus  
-   - [`afi-docs`](https://github.com/AFI-Protocol/afi-docs) – spec & white-paper source  
-   - [`afi-agents`](https://github.com/AFI-Protocol/afi-agents) – agent configs & runtime
+   - [`afi-docs`](https://github.com/AFI-Protocol/afi-docs) – spec & white-paper source
 4. **Need bleeding-edge access?**  
    The `afi-labs` repo hosts experimental code and is **private**.  
    Request access in Discord (`#labs-access`) once you’ve made an initial PR or proposal.
