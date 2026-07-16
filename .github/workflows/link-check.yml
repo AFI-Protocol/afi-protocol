@@ -1,0 +1,19 @@
+name: Link Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --include-fragments './**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
