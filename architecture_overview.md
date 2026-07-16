@@ -3,7 +3,7 @@
 Welcome, human or droid!  
 This document gives you the 10 000‑ft view of how the **Agentic Financial Intelligence (AFI)** repos inter‑operate.
 
-> **Canonical orchestration status:** AFI Reactor uses a **custom deterministic TypeScript DAG** (`afi-reactor/src/dag/`), not LangChain/LangGraph. See [`afi-docs/ARCHITECTURE_STATUS.md`](../afi-docs/ARCHITECTURE_STATUS.md). Superseded LangGraph-era plans live in [`afi-docs/archive/langgraph-migration-2025/`](../afi-docs/archive/langgraph-migration-2025/).
+> **Orchestration:** AFI Reactor is a **custom, deterministic TypeScript DAG orchestrator** (`afi-reactor/src/dag/` — `DAGBuilder`, `DAGExecutor`, `PluginRegistry`). Signals flow through typed **pipeheads** (`afi-reactor/src/pipeheads/`) with explicit `PipelineState` (`afi-reactor/src/types/dag.ts`), dependency ordering, and Codex-configured replay for auditability and reproducibility. See [`afi-docs/ARCHITECTURE_STATUS.md`](https://github.com/AFI-Protocol/afi-docs/blob/main/ARCHITECTURE_STATUS.md).
 
 ```
 afi-protocol/
