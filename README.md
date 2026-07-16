@@ -3,8 +3,8 @@
 **Agentic Financial Intelligence (AFI)** is an open protocol for turning trading
 signals — produced by human or agentic analysts — into scored, auditable,
 replayable evidence. Every signal is normalized to a canonical form, scored by
-version-pinned rules, and persisted with full provenance, so any independent
-party can verify exactly how a score was produced.
+version-pinned rules, and persisted with full provenance, designed so that any
+independent party can verify exactly how a score was produced.
 
 This repository is the **navigation map for the AFI organization**: what
 defines the protocol, what implements it, what may be replaced, what exists
