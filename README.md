@@ -21,10 +21,11 @@ Protocol authority lives in exactly three repositories:
 | 2 | [afi-config](https://github.com/AFI-Protocol/afi-config) | Canonical schemas, registries, conventions, and known-answer tests ([`kats/`](https://github.com/AFI-Protocol/afi-config/tree/main/kats)). |
 | 3 | [afi-math](https://github.com/AFI-Protocol/afi-math) | Canonical deterministic math kernels and their golden vectors. |
 
-If anything in this repository disagrees with a governed artifact in those
-repositories, the governed artifact wins. This map is not the schema home, not
-the math home, not a runtime, and not a substitute for
-[afi-docs](https://github.com/AFI-Protocol/afi-docs).
+Authority is exactly what the accepted decisions expressly delegate —
+self-labeling confers nothing. If anything in this repository disagrees with a
+governed artifact in those repositories, the governed artifact wins. This map
+is not the schema home, not the math home, not a runtime, and not a substitute
+for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 
 ## The protocol in brief
 
@@ -34,16 +35,18 @@ the math home, not a runtime, and not a substitute for
   ([object-identity-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/object-identity-v0.1.md)).
 - **Canonical inbound signal form** is the Universal Signal Schema (USS) v1.1
   ([`schemas/usignal/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/usignal)).
-- **Scoring** runs the UWR (Universal Weighting Rule) engine with version-pinned
-  profiles registered in
+- **Scoring** runs the governed UWR (Universal Weighting Rule) engine. The
+  protocol-recognized profile is version-pinned (testnet-provisional) in
   [`registries/uwr-profiles/`](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles).
-  Analysts may configure conforming UWR profiles, decay/Greeks surfaces, and
-  strategy pipelines **without bespoke governance permission** — profiles become
-  protocol-recognized by being registered and version-pinned.
-- **Persistence** follows one canonical chain:
-  **Gateway → Reactor → afi-infra → MongoDB**, with a single write path.
-  The Gateway authenticates and routes; it never constructs or writes canonical
-  evidence.
+  Analysts may configure and run conforming UWR profiles, decay/Greeks
+  surfaces, and strategy pipelines **without bespoke governance permission**;
+  a profile becomes *protocol-recognized* only when registered and
+  version-pinned in afi-config — a governed registry change.
+- **Persistence** — the current canonical chain is
+  **Gateway → Reactor → afi-infra → MongoDB**. Protocol law fixes the single
+  write path: afi-infra owns the sole canonical persistence interface. The
+  Gateway authenticates and routes to the Reactor; it never constructs or
+  writes canonical evidence (guardrail-enforced).
 - **Lifecycle** is the governed state machine
   `INGESTED → VALIDATED → SCORED → CERTIFIED → QUALIFIED → CHALLENGE_OPEN → [CONTESTED →] FINALIZED → EPOCH_ELIGIBLE`.
   **The implemented lifecycle currently reaches `SCORED`** — see
@@ -61,7 +64,7 @@ The organization is exactly 22 repositories.
 | [afi-config](https://github.com/AFI-Protocol/afi-config) | Canonical schemas, registries, conventions, KATs |
 | [afi-math](https://github.com/AFI-Protocol/afi-math) | Canonical deterministic math kernels + golden vectors |
 
-### Governed implementation — canonical in practice, replaceable via the same contracts (6)
+### Governed implementation — replaceable via the same contracts (6)
 
 | Repository | Role |
 |---|---|
@@ -81,7 +84,7 @@ The organization is exactly 22 repositories.
 | [afi-cli-framework](https://github.com/AFI-Protocol/afi-cli-framework) | CLI framework used by the gateway |
 | [afi-skills](https://github.com/AFI-Protocol/afi-skills) | Skills content library |
 | [afi-xerc20](https://github.com/AFI-Protocol/afi-xerc20) | Vendored xERC20 standard (dependency of afi-token) |
-| afi-tiny-brains *(private)* | Optional ML enrichment sidecar; cannot affect scoring or evidence |
+| afi-tiny-brains *(private)* | Optional fail-soft ML enrichment sidecar |
 
 ### Research and records — non-canonical (4)
 
@@ -112,7 +115,7 @@ A conforming AFI implementation must:
    [`scored-signal-evidence` v1 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence)
    and its published
    [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v1/vectors),
-   the pinned UWR profile values, and the
+   the pinned UWR profile values (testnet-provisional), and the
    [KAT vectors](https://github.com/AFI-Protocol/afi-config/tree/main/kats).
 3. **Match the canonical math kernel outputs** for any component computing
    emissions, decay, or time value — the
@@ -143,8 +146,8 @@ Deliberately not implemented, or not yet governed:
   `FINALIZED`) — the single finality writer is defined in law but
   intentionally unimplemented pending new authorization.
 - **Epoch accounting and rewards** — no implemented owner.
-- **Live mint orchestration** — blocked by design until role weights are
-  governed.
+- **Live mint orchestration** — governance-blocked: role weights and the
+  settlement/epoch layer are not yet governed.
 - **Mainnet settlement** — not yet governed.
 - **An external read/API surface (“API Atlas”)** — reserved for future
   governance and not started. **There is no canonical API Atlas yet.**
@@ -160,7 +163,10 @@ Part D); both are non-production:
 - **District 2** — the data/provenance boundary: its M1 schema family is homed
   in [afi-config](https://github.com/AFI-Protocol/afi-config)
   ([`schemas/provenance/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/provenance)),
-  and its M2 surface in afi-reactor is prospectively ratified.
+  and its M2 surface in afi-reactor is prospectively ratified. The registry
+  keeps District 2’s M1 authorization instrument
+  ([D-17](https://github.com/AFI-Protocol/afi-docs/blob/main/reports/district-2-d17-implementation-authorization.md),
+  homed in afi-docs) in force.
 
 ## Where to begin
 
