@@ -32,20 +32,20 @@ the math home, not a runtime, and not a substitute for
   canonical form, score, evidence record — joins on it.
 - **Strategy identity is the triple `analystId + strategyId + strategyVersion`**
   ([object-identity-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/object-identity-v0.1.md)).
-- **Canonical signal form** is the Universal Signal Schema (USS) v1.1
+- **Canonical inbound signal form** is the Universal Signal Schema (USS) v1.1
   ([`schemas/usignal/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/usignal)).
 - **Scoring** runs the UWR (Universal Weighting Rule) engine with version-pinned
   profiles registered in
   [`registries/uwr-profiles/`](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles).
   Analysts may configure conforming UWR profiles, decay/Greeks surfaces, and
   strategy pipelines **without bespoke governance permission** — profiles become
-  protocol-recognized by being registered and version-pinned, not by asking.
+  protocol-recognized by being registered and version-pinned.
 - **Persistence** follows one canonical chain:
   **Gateway → Reactor → afi-infra → MongoDB**, with a single write path.
   The Gateway authenticates and routes; it never constructs or writes canonical
   evidence.
 - **Lifecycle** is the governed state machine
-  `INGESTED → VALIDATED → SCORED → CERTIFIED → QUALIFIED → CHALLENGE_OPEN → [CONTESTED] → FINALIZED → EPOCH_ELIGIBLE`.
+  `INGESTED → VALIDATED → SCORED → CERTIFIED → QUALIFIED → CHALLENGE_OPEN → [CONTESTED →] FINALIZED → EPOCH_ELIGIBLE`.
   **The implemented lifecycle currently reaches `SCORED`** — see
   [Implemented today](#implemented-today).
 
@@ -110,10 +110,14 @@ A conforming AFI implementation must:
    persistence, scoring pins, math authority, and economic law.
 2. **Validate against the afi-config contracts** — the
    [`scored-signal-evidence` v1 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence)
-   and its published valid/invalid vectors, the pinned UWR profile values, and
-   the KAT vectors.
-3. **Match the afi-math golden vectors** for any component computing emissions,
-   decay, or time value.
+   and its published
+   [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v1/vectors),
+   the pinned UWR profile values, and the
+   [KAT vectors](https://github.com/AFI-Protocol/afi-config/tree/main/kats).
+3. **Match the canonical math kernel outputs** for any component computing
+   emissions, decay, or time value — the
+   [afi-math](https://github.com/AFI-Protocol/afi-math) golden vectors and the
+   afi-config KAT vectors (scoring and time decay).
 
 Everything else may be replaced: any runtime honoring the same contracts and
 handoffs, any store honoring `signalId`-keyed evidence semantics, any
@@ -164,7 +168,7 @@ Part D); both are non-production:
 |---|---|
 | **Developer** | [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) (runtime) and [afi-core](https://github.com/AFI-Protocol/afi-core) (scoring library), then the contracts in [afi-config](https://github.com/AFI-Protocol/afi-config) |
 | **Analyst / strategy author** | the [UWR profile registry](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles) and [KATs](https://github.com/AFI-Protocol/afi-config/tree/main/kats) in afi-config; identity and configurability rules in [afi-governance decisions](https://github.com/AFI-Protocol/afi-governance/tree/main/decisions) |
-| **Validator** | the [`scored-signal-evidence` v1 schema and vectors](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
+| **Validator** | the [`scored-signal-evidence` v1 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v1/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
 | **Operator** | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) (submission boundary) and [afi-infra](https://github.com/AFI-Protocol/afi-infra) (canonical store); persistence decisions in [afi-governance](https://github.com/AFI-Protocol/afi-governance) |
 | **Researcher** | [afi-docs](https://github.com/AFI-Protocol/afi-docs), [afi-econ](https://github.com/AFI-Protocol/afi-econ), [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit), and the frozen record in [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) |
 
