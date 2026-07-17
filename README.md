@@ -38,6 +38,10 @@ for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 - **Scoring** runs the governed UWR (Universal Weighting Rule) engine. The
   protocol-recognized profile is version-pinned (testnet-provisional) in
   [`registries/uwr-profiles/`](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles).
+  Analysts compose the five analysis categories (`technical`, `pattern`,
+  `sentiment`, `news`, `aiMl`) into registered pipelines via the delegated
+  [afi-config registries](https://github.com/AFI-Protocol/afi-config/tree/main/registries)
+  ([factory-configurable-pipelines-v1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/factory-configurable-pipelines-v1.md)).
   Analysts may configure and run conforming UWR profiles, decay/Greeks
   surfaces, and strategy pipelines **without bespoke governance permission**;
   a profile becomes *protocol-recognized* only when registered and
@@ -69,7 +73,7 @@ The organization is exactly 22 repositories.
 | Repository | Role |
 |---|---|
 | [afi-core](https://github.com/AFI-Protocol/afi-core) | Scoring library: governed UWR engine, profile loader, decay surfaces |
-| [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) | Scoring runtime: ingest → USS validation → scoring → UWR resolution → evidence construction → submission |
+| [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) | Scoring runtime: ingest → USS validation → analyst-configurable graph execution (registered strategies compose the five analysis categories) → scoring → UWR resolution → evidence construction → submission |
 | [afi-infra](https://github.com/AFI-Protocol/afi-infra) | Canonical evidence store: `scored_signal_evidence` on MongoDB — unique `signalId`, append-once, transactional supersession |
 | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) | External submission boundary: authenticates and routes to the Reactor; never writes evidence |
 | [afi-mint](https://github.com/AFI-Protocol/afi-mint) | Mint/reward execution home (delegated; not live — see status) |
@@ -80,7 +84,7 @@ The organization is exactly 22 repositories.
 | Repository | Role |
 |---|---|
 | [afi-docs](https://github.com/AFI-Protocol/afi-docs) | Documentation hub |
-| [afi-factory](https://github.com/AFI-Protocol/afi-factory) | Analyst-config types and fixtures |
+| [afi-factory](https://github.com/AFI-Protocol/afi-factory) | Pipeline authoring system: template authoring and instantiation, manifest validation, canonical hashing |
 | [afi-cli-framework](https://github.com/AFI-Protocol/afi-cli-framework) | CLI framework used by the gateway |
 | [afi-skills](https://github.com/AFI-Protocol/afi-skills) | Skills content library |
 | [afi-xerc20](https://github.com/AFI-Protocol/afi-xerc20) | Vendored xERC20 standard (dependency of afi-token) |
@@ -112,9 +116,10 @@ A conforming AFI implementation must:
    — object identity (`signalId`, USS v1.1, the strategy triple), lifecycle,
    persistence, scoring pins, math authority, and economic law.
 2. **Validate against the afi-config contracts** — the
-   [`scored-signal-evidence` v1 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence)
-   and its published
-   [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v1/vectors),
+   [`scored-signal-evidence` v2 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v2)
+   (canonical evidence is `afi.scored-signal-evidence.v2`, which carries a
+   thin composition reference) and its published
+   [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v2/vectors),
    the pinned UWR profile values (testnet-provisional), and the
    [KAT vectors](https://github.com/AFI-Protocol/afi-config/tree/main/kats).
 3. **Match the canonical math kernel outputs** for any component computing
@@ -174,7 +179,7 @@ Part D); both are non-production:
 |---|---|
 | **Developer** | [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) (runtime) and [afi-core](https://github.com/AFI-Protocol/afi-core) (scoring library), then the contracts in [afi-config](https://github.com/AFI-Protocol/afi-config) |
 | **Analyst / strategy author** | the [UWR profile registry](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles) and [KATs](https://github.com/AFI-Protocol/afi-config/tree/main/kats) in afi-config; identity and configurability rules in [afi-governance decisions](https://github.com/AFI-Protocol/afi-governance/tree/main/decisions) |
-| **Validator** | the [`scored-signal-evidence` v1 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v1/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
+| **Validator** | the [`scored-signal-evidence` v2 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v2) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v2/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
 | **Operator** | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) (submission boundary) and [afi-infra](https://github.com/AFI-Protocol/afi-infra) (canonical store); persistence decisions in [afi-governance](https://github.com/AFI-Protocol/afi-governance) |
 | **Researcher** | [afi-docs](https://github.com/AFI-Protocol/afi-docs), [afi-econ](https://github.com/AFI-Protocol/afi-econ), [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit), and the frozen record in [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) |
 
