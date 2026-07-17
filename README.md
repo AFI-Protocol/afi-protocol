@@ -58,7 +58,7 @@ for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 
 ## Repository map
 
-The organization is exactly 20 repositories.
+The organization is exactly 19 repositories.
 
 ### Protocol definition — independent implementations must conform (3)
 
@@ -88,14 +88,13 @@ The organization is exactly 20 repositories.
 | [afi-xerc20](https://github.com/AFI-Protocol/afi-xerc20) | Vendored xERC20 standard (dependency of afi-token) |
 | afi-tiny-brains *(private)* | Optional fail-soft ML enrichment sidecar |
 
-### Research and records — non-canonical (4)
+### Research and records — non-canonical (3)
 
 | Repository | Role |
 |---|---|
 | [afi-econ](https://github.com/AFI-Protocol/afi-econ) | Economic research kit (non-canonical unless promoted by governance) |
 | [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit) | Evaluation and benchmark harness |
 | [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) | Frozen, DOI-minted paper reproducibility bundle |
-| afi-labs *(private)* | Research and prototyping |
 
 ### Organization surfaces (3)
 
