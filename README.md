@@ -58,7 +58,7 @@ for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 
 ## Repository map
 
-The organization is exactly 21 repositories.
+The organization is exactly 20 repositories.
 
 ### Protocol definition — independent implementations must conform (3)
 
@@ -79,13 +79,12 @@ The organization is exactly 21 repositories.
 | [afi-mint](https://github.com/AFI-Protocol/afi-mint) | Mint/reward execution home (delegated; not live — see status) |
 | [afi-token](https://github.com/AFI-Protocol/afi-token) | On-chain token enforcement (86B hard cap; testnet-proven) |
 
-### Support and reference — optional, replaceable (5)
+### Support and reference — optional, replaceable (4)
 
 | Repository | Role |
 |---|---|
 | [afi-docs](https://github.com/AFI-Protocol/afi-docs) | Documentation hub |
-| [afi-factory](https://github.com/AFI-Protocol/afi-factory) | Pipeline authoring system: template authoring and instantiation, manifest validation, canonical hashing |
-| [afi-skills](https://github.com/AFI-Protocol/afi-skills) | Skills content library |
+| [afi-factory](https://github.com/AFI-Protocol/afi-factory) | Pipeline authoring system: template authoring/instantiation, manifest validation, canonical hashing, and an agent-operable capability layer (SDK, CLI, machine-readable catalog, MCP adapter) for authoring pipeline artifacts |
 | [afi-xerc20](https://github.com/AFI-Protocol/afi-xerc20) | Vendored xERC20 standard (dependency of afi-token) |
 | afi-tiny-brains *(private)* | Optional fail-soft ML enrichment sidecar |
 
