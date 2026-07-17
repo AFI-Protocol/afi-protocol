@@ -58,7 +58,7 @@ for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 
 ## Repository map
 
-The organization is exactly 19 repositories.
+The organization is exactly 18 repositories.
 
 ### Protocol definition — independent implementations must conform (3)
 
@@ -96,13 +96,12 @@ The organization is exactly 19 repositories.
 | [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit) | Evaluation and benchmark harness |
 | [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) | Frozen, DOI-minted paper reproducibility bundle |
 
-### Organization surfaces (3)
+### Organization surfaces (2)
 
 | Repository | Role |
 |---|---|
 | afi-protocol | This map |
 | [.github](https://github.com/AFI-Protocol/.github) | Organization profile and defaults |
-| afi-ops *(private)* | Operational scripting |
 
 ## For independent implementers
 
