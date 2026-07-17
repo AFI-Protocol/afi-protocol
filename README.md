@@ -27,6 +27,27 @@ governed artifact in those repositories, the governed artifact wins. This map
 is not the schema home, not the math home, not a runtime, and not a substitute
 for [afi-docs](https://github.com/AFI-Protocol/afi-docs).
 
+## Protocol and operation
+
+AFI separates the **protocol** from its **operators**.
+
+- **Rules vs operation.** AFI Protocol defines the interoperable rules — the
+  governed contracts, schemas, math, identities, and lifecycle. Operating a
+  service confers no authority over them; self-labeling confers nothing.
+- **Official reference services.** AFI Research Institute is *designated to
+  operate* AFI's official open reference services — a hosted **Gateway** reference
+  service for structured ingress and an **oracle-ingress / CPJ-normalization**
+  reference service for message- and source-derived signals
+  ([INST-GOV](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/research-institute-reference-services-v0.1.md);
+  [reference-services spec](https://github.com/AFI-Protocol/afi-docs/blob/main/specs/AFI_RESEARCH_INSTITUTE_REFERENCE_SERVICES.v0.1.md)).
+- **Non-exclusive.** The designation is non-exclusive. Any independent party may
+  run the open-source Gateway, a conforming re-implementation, its own collectors,
+  or its own AFI-compatible infrastructure — conformance is defined by the
+  afi-config contracts and KATs, not by who operates.
+- **No live deployment claimed.** These reference services are not deployed; the
+  implemented pipeline is CI-proven and currently reaches `SCORED` (see
+  [Implemented today](#implemented-today)).
+
 ## The protocol in brief
 
 - **`signalId` is the canonical join key.** Every artifact about a signal —
