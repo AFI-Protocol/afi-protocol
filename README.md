@@ -180,8 +180,11 @@ Exactly two Districts are formally registered
 ([authority-districts-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/authority-districts-v0.1.md),
 Part D); both are non-production:
 
-- **District 1** — the pipehead proof-of-concept hosted in
-  [afi-reactor](https://github.com/AFI-Protocol/afi-reactor).
+- **District 1** — signal evaluation: its current implementation is the live
+  manifest-driven GraphExecutor pipeline hosted in
+  [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) (the sole
+  signal-evaluation executor; implementation record per
+  [district-surface-consolidation-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-surface-consolidation-v0.1.md)).
 - **District 2** — the data/provenance boundary: its M1 schema family is homed
   in [afi-config](https://github.com/AFI-Protocol/afi-config)
   ([`schemas/provenance/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/provenance)),
