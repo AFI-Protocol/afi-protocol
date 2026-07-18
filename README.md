@@ -178,15 +178,23 @@ Deliberately not implemented, or not yet governed:
 
 Exactly two Districts are formally registered
 ([authority-districts-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/authority-districts-v0.1.md),
-Part D); both are non-production:
+Part D); both are active capability domains, and both remain non-production:
 
-- **District 1** — signal evaluation: its current implementation is the live
-  manifest-driven GraphExecutor pipeline hosted in
-  [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) (the sole
-  signal-evaluation executor; implementation record per
-  [district-surface-consolidation-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-surface-consolidation-v0.1.md)).
-- **District 2** — the data/provenance boundary: its M1 schema family is homed
-  in [afi-config](https://github.com/AFI-Protocol/afi-config)
+- **District 1 — Signal Evaluation** — the active Signal Evaluation
+  capability domain
+  ([district-one-signal-evaluation-capability-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-one-signal-evaluation-capability-v0.1.md)):
+  its current implementation is the live manifest-driven GraphExecutor
+  pipeline hosted in
+  [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) — the sole
+  signal-evaluation executor. Its former non-production Pipehead POC
+  implementation is retired
+  ([district-surface-consolidation-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-surface-consolidation-v0.1.md));
+  the district itself endures — implementations may be replaced through
+  accepted authority without retiring the district.
+- **District 2 — Evidence & Provenance** — the data/provenance boundary: it
+  receives the scored evaluation result from District 1 and owns evidence
+  construction and the canonical persistence handoff. Its M1 schema family is
+  homed in [afi-config](https://github.com/AFI-Protocol/afi-config)
   ([`schemas/provenance/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/provenance)),
   and its M2 surface in afi-reactor is prospectively ratified. The registry
   keeps District 2’s M1 authorization instrument
