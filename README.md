@@ -107,7 +107,7 @@ The organization is exactly 18 repositories.
 | [afi-docs](https://github.com/AFI-Protocol/afi-docs) | Documentation hub |
 | [afi-factory](https://github.com/AFI-Protocol/afi-factory) | Pipeline authoring system: template authoring/instantiation, manifest validation, canonical hashing, and an agent-operable capability layer (SDK, CLI, machine-readable catalog, MCP adapter) for authoring pipeline artifacts |
 | [afi-xerc20](https://github.com/AFI-Protocol/afi-xerc20) | Vendored xERC20 standard (dependency of afi-token) |
-| afi-tiny-brains *(private)* | Optional fail-soft ML enrichment sidecar |
+| afi-tiny-brains *(private)* | Bounded first-party aiMl orchestration service (profile-selected experts, deterministic resolver; scoring-inert) |
 
 ### Research and records — non-canonical (3)
 
