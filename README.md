@@ -94,8 +94,8 @@ The organization is exactly 18 repositories.
 | Repository | Role |
 |---|---|
 | [afi-core](https://github.com/AFI-Protocol/afi-core) | Scoring library: governed UWR engine, profile loader, decay surfaces |
-| [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) | Scoring runtime: ingest → USS validation → analyst-configurable graph execution (registered strategies compose the five analysis categories) → scoring → UWR resolution → evidence construction → submission |
-| [afi-infra](https://github.com/AFI-Protocol/afi-infra) | Canonical evidence store: `scored_signal_evidence` on MongoDB — unique `signalId`, append-once, transactional supersession |
+| [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) | Scoring runtime: ingest → USS validation → analyst-configurable graph execution (registered strategies compose the five analysis categories through explicitly selected provider instances; all five lanes must succeed) → deterministic join → scoring → UWR resolution → Evidence V3 construction (five bound provider invocation proofs) → submission |
+| [afi-infra](https://github.com/AFI-Protocol/afi-infra) | Canonical evidence store: `scored_signal_evidence` on MongoDB — `afi.scored-signal-evidence.v3` only, hash-verified admission, unique `signalId`, append-once, transactional supersession |
 | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) | External submission boundary: authenticates and routes to the Reactor; never writes evidence |
 | [afi-mint](https://github.com/AFI-Protocol/afi-mint) | Mint/reward execution home (delegated; not live — see status) |
 | [afi-token](https://github.com/AFI-Protocol/afi-token) | On-chain token enforcement (86B hard cap; testnet-proven) |
@@ -133,10 +133,12 @@ A conforming AFI implementation must:
    — object identity (`signalId`, USS v1.1, the strategy triple), lifecycle,
    persistence, scoring pins, math authority, and economic law.
 2. **Validate against the afi-config contracts** — the
-   [`scored-signal-evidence` v2 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v2)
-   (canonical evidence is `afi.scored-signal-evidence.v2`, which carries a
-   thin composition reference) and its published
-   [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v2/vectors),
+   [`scored-signal-evidence` v3 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v3)
+   (canonical evidence is `afi.scored-signal-evidence.v3`, which carries a
+   thin composition reference, exactly five credential-safe per-lane provider
+   invocation proofs, and record-level `recordHash`/`replayHash` commitments)
+   and its published
+   [valid/invalid vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v3/vectors),
    the pinned UWR profile values (testnet-provisional), and the
    [KAT vectors](https://github.com/AFI-Protocol/afi-config/tree/main/kats).
 3. **Match the canonical math kernel outputs** for any component computing
@@ -207,7 +209,7 @@ Part D); both are active capability domains, and both remain non-production:
 |---|---|
 | **Developer** | [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) (runtime) and [afi-core](https://github.com/AFI-Protocol/afi-core) (scoring library), then the contracts in [afi-config](https://github.com/AFI-Protocol/afi-config) |
 | **Analyst / strategy author** | the [UWR profile registry](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles) and [KATs](https://github.com/AFI-Protocol/afi-config/tree/main/kats) in afi-config; identity and configurability rules in [afi-governance decisions](https://github.com/AFI-Protocol/afi-governance/tree/main/decisions) |
-| **Validator** | the [`scored-signal-evidence` v2 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v2) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v2/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
+| **Validator** | the [`scored-signal-evidence` v3 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v3) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v3/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
 | **Operator** | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) (submission boundary) and [afi-infra](https://github.com/AFI-Protocol/afi-infra) (canonical store); persistence decisions in [afi-governance](https://github.com/AFI-Protocol/afi-governance) |
 | **Researcher** | [afi-docs](https://github.com/AFI-Protocol/afi-docs), [afi-econ](https://github.com/AFI-Protocol/afi-econ), [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit), and the frozen record in [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) |
 
