@@ -173,8 +173,12 @@ Deliberately not implemented, or not yet governed:
 - **Live mint orchestration** — governance-blocked: role weights and the
   settlement/epoch layer are not yet governed.
 - **Mainnet settlement** — not yet governed.
-- **An external read/API surface (“API Atlas”)** — reserved for future
-  governance and not started. **There is no canonical API Atlas yet.**
+- **A live read/replay/verify API surface over the Atlas or evidence** —
+  reserved to ATLAS-GOV and not built. The Atlas foundation (below) is
+  discoverability metadata, not a runtime endpoint.
+- **The AFI Protocol City** (the visual navigation of Atlas truth) and the
+  **AFI Participant Gateway** (a registration/conformance control plane) —
+  **not started**.
 
 ## Districts
 
@@ -202,6 +206,27 @@ Part D); both are active capability domains, and both remain non-production:
   keeps District 2’s M1 authorization instrument
   ([D-17](https://github.com/AFI-Protocol/afi-docs/blob/main/reports/district-2-d17-implementation-authorization.md),
   homed in afi-docs) in force.
+
+## District / API Atlas
+
+AFI is organized into **capability Districts** — enduring capability and
+authority domains, not repositories. A single structure may serve more than one
+District (the Reactor runtime serves both), and a routing structure such as the
+Gateway may **route access without owning** the underlying capability.
+
+The **District / API Atlas** is AFI's canonical discoverability layer
+([district-api-atlas-foundation-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-api-atlas-foundation-v0.1.md),
+ATLAS-GOV). Its machine-readable foundation (`afi.protocol-atlas.v1`, in
+afi-config) exposes AFI's current **capabilities, interfaces, routes, contracts,
+and maturity**, keeping maturity separate from visibility and marking honestly
+`reserved` future space. It **describes** the protocol; it defines no District,
+routes no traffic, and exposes no endpoint. The full picture lives in
+[afi-docs `AFI_Full_Architecture.md`](https://github.com/AFI-Protocol/afi-docs/blob/main/AFI_Full_Architecture.md).
+
+The future **AFI Protocol City** will visualize Atlas truth, and any
+AFI-operated participant onboarding will be a **reference entrance, not the only
+one**: third parties may build competing conformant onboarding and developer
+experiences against AFI's shared conformance requirements.
 
 ## Where to begin
 
