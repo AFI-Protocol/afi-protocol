@@ -192,11 +192,9 @@ Part D); both are active capability domains, and both remain non-production:
   its current implementation is the live manifest-driven GraphExecutor
   pipeline hosted in
   [afi-reactor](https://github.com/AFI-Protocol/afi-reactor) — the sole
-  signal-evaluation executor. Its former non-production Pipehead POC
-  implementation is retired
-  ([district-surface-consolidation-v0.1](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/district-surface-consolidation-v0.1.md));
-  the district itself endures — implementations may be replaced through
-  accepted authority without retiring the district.
+  signal-evaluation executor. The district is an enduring capability and
+  authority domain — implementations may be replaced through accepted authority
+  without retiring the district.
 - **District 2 — Evidence & Provenance** — the data/provenance boundary: it
   receives the scored evaluation result from District 1 and owns evidence
   construction and the canonical persistence handoff. Its M1 schema family is
