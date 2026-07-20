@@ -201,9 +201,9 @@ Part D); both are active capability domains, and both remain non-production:
   homed in [afi-config](https://github.com/AFI-Protocol/afi-config)
   ([`schemas/provenance/`](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/provenance)),
   and its M2 surface in afi-reactor is prospectively ratified. The registry
-  keeps District 2’s M1 authorization instrument
-  ([D-17](https://github.com/AFI-Protocol/afi-docs/blob/main/reports/district-2-d17-implementation-authorization.md),
-  homed in afi-docs) in force.
+  keeps District 2’s M1 authorization
+  ([R1-GOV D-R1-5](https://github.com/AFI-Protocol/afi-governance/blob/main/decisions/current-authority-reroot-and-golden-closure-v0.1.md),
+  in afi-governance) in force.
 
 ## District / API Atlas
 
