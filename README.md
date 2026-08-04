@@ -73,7 +73,7 @@ AFI separates the **protocol** from its **operators**.
   Gateway authenticates and routes to the Reactor; it never constructs or
   writes canonical evidence (guardrail-enforced).
 - **Lifecycle** is the governed state machine
-  `INGESTED → VALIDATED → SCORED → CERTIFIED → QUALIFIED → CHALLENGE_OPEN → [CONTESTED →] FINALIZED → EPOCH_ELIGIBLE`.
+  `INGESTED → VALIDATED → SCORED → CERTIFIED → QUALIFIED → FINALIZED → EPOCH_ELIGIBLE`.
   **The implemented lifecycle currently reaches `SCORED`** — see
   [Implemented today](#implemented-today).
 
@@ -166,7 +166,7 @@ ingest → USS v1.1 validation → scoring (governed UWR engine, pinned profile)
 
 Deliberately not implemented, or not yet governed:
 
-- **Post-`SCORED` transitions** (`CERTIFIED`, `QUALIFIED`, challenge,
+- **Post-`SCORED` transitions** (`CERTIFIED`, `QUALIFIED`,
   `FINALIZED`) — the single finality writer is defined in law but
   intentionally unimplemented pending new authorization.
 - **Epoch accounting and rewards** — no implemented owner.
