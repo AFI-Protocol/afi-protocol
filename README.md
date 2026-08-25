@@ -114,7 +114,6 @@ The organization is exactly 18 repositories.
 | Repository | Role |
 |---|---|
 | [afi-econ](https://github.com/AFI-Protocol/afi-econ) | Economic research kit (non-canonical unless promoted by governance) |
-| [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit) | Evaluation and benchmark harness |
 | [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) | Frozen, DOI-minted paper reproducibility bundle |
 
 ### Organization surfaces (2)
@@ -234,7 +233,7 @@ experiences against AFI's shared conformance requirements.
 | **Analyst / strategy author** | the [UWR profile registry](https://github.com/AFI-Protocol/afi-config/tree/main/registries/uwr-profiles) and [KATs](https://github.com/AFI-Protocol/afi-config/tree/main/kats) in afi-config; identity and configurability rules in [afi-governance decisions](https://github.com/AFI-Protocol/afi-governance/tree/main/decisions) |
 | **Validator** | the [`scored-signal-evidence` v3 schema](https://github.com/AFI-Protocol/afi-config/tree/main/schemas/scored-signal-evidence/v3) and its [vectors](https://github.com/AFI-Protocol/afi-config/tree/main/examples/scored-signal-evidence/v3/vectors) in afi-config; store semantics in [afi-infra](https://github.com/AFI-Protocol/afi-infra) |
 | **Operator** | [afi-gateway](https://github.com/AFI-Protocol/afi-gateway) (submission boundary) and [afi-infra](https://github.com/AFI-Protocol/afi-infra) (canonical store); persistence decisions in [afi-governance](https://github.com/AFI-Protocol/afi-governance) |
-| **Researcher** | [afi-docs](https://github.com/AFI-Protocol/afi-docs), [afi-econ](https://github.com/AFI-Protocol/afi-econ), [afi-benchkit](https://github.com/AFI-Protocol/afi-benchkit), and the frozen record in [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) |
+| **Researcher** | [afi-docs](https://github.com/AFI-Protocol/afi-docs), [afi-econ](https://github.com/AFI-Protocol/afi-econ), and the frozen record in [afi-artifacts](https://github.com/AFI-Protocol/afi-artifacts) |
 
 Contributions are welcome by fork and pull request in any public repository.
 Conforming analyst pipelines need no permission — conformance is defined by the
